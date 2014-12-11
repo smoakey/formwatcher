@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery Form Watcher | Basic Example</title>
+		<style>
+			form {
+				border: 1px solid #CCC;
+				padding: 50px;
+			}
+			form legend {
+				font-weight: bold;
+				font-size: 2em;
+				margin-bottom: 50px;
+			}
+			form input[type="text"],
+			form textarea {
+				display: block;
+				width: 100%;
+				margin-bottom: 20px;
+				border: 1px solid #ccc;
+				padding: 5px;
+			}
+			form input[type="text"]:focus,
+			form textarea:focus {
+				border-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="example.html" method="post">
+			<legend>Formwatcher Example</legend>
+			<label>Text 1</label>
+			<input type="text" name="test1_1" />
+
+			<label>Textarea 1</label>
+			<textarea name="test1_2" rows="15"></textarea>
+			<button type="submit">Submit Form</button>
+		</form>
+		<hr />
+		<form action="example.html" method="post">
+			<legend>Formwatcher Example 2</legend>
+			<label>Text 1</label>
+			<input type="text" name="test2_1" />
+			<label>Text 1</label>
+			<input type="text" name="test2_2" />
+			<button type="submit">Submit Form</button>
+		</form>
+
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="formwatcher.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('form').formWatcher({
+					message: 'YOu sure',
+					onChange: function(form, diff)
+					{
+						console.log(diff);
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
